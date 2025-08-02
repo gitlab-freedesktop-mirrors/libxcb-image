@@ -6,17 +6,17 @@
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * Except as contained in this notice, the names of the authors or their
  * institutions shall not be used in advertising or otherwise to promote the
  * sale, use or other dealings in this Software without prior written
@@ -42,7 +42,7 @@
 
 static xcb_format_t *
 find_format_by_depth (const xcb_setup_t *setup, uint8_t depth)
-{ 
+{
   xcb_format_t *fmt = xcb_setup_pixmap_formats(setup);
   xcb_format_t *fmtend = fmt + xcb_setup_pixmap_formats_length(setup);
   for(; fmt != fmtend; ++fmt)
@@ -157,7 +157,7 @@ xcb_image_create_native (xcb_connection_t *  c,
   const xcb_setup_t *  setup = xcb_get_setup(c);
   xcb_format_t *       fmt;
   xcb_image_format_t   ef = format;
-  
+
   if (ef == XCB_IMAGE_FORMAT_Z_PIXMAP && depth == 1)
       ef = XCB_IMAGE_FORMAT_XY_PIXMAP;
   switch (ef) {
@@ -262,7 +262,7 @@ xcb_image_create (uint16_t           width,
    * points at sufficient storage that may have been
    * supplied, and base is set iff it should be
    * auto-freed when the image is destroyed.
-   * 
+   *
    * Except as a special case when base = 0 && data == 0 &&
    * bytes == ~0 we just return the image structure and let
    * the caller deal with getting the allocation right.
@@ -490,7 +490,7 @@ xcb_image_shm_put (xcb_connection_t *      conn,
 		    src_x, src_y, src_width, src_height,
 		    dest_x, dest_y,
 		    image->depth, image->format,
-		    send_event, 
+		    send_event,
 		    shminfo.shmseg,
 		    image->data - shminfo.shmaddr);
   return image;
@@ -775,7 +775,7 @@ xcb_image_create_from_bitmap_data (uint8_t *           data,
  * xcb_create_pixmap_from_bitmap_data: Routine to make a pixmap of
  *      given depth from user supplied bitmap data.
  *	D is any drawable on the same screen that the pixmap will be used in.
- *	Data is a pointer to the bit data, and 
+ *	Data is a pointer to the bit data, and
  *	width & height give the size in bits of the pixmap.
  *
  * The following format is assumed for data:
@@ -784,7 +784,7 @@ xcb_image_create_from_bitmap_data (uint8_t *           data,
  *    bit_order=LSBFirst
  *    padding=8
  *    bitmap_unit=8
- */  
+ */
 xcb_pixmap_t
 xcb_create_pixmap_from_bitmap_data (xcb_connection_t *  display,
 				    xcb_drawable_t      d,
@@ -832,7 +832,7 @@ xcb_create_pixmap_from_bitmap_data (xcb_connection_t *  display,
 
 
 /* Thanks to Keith Packard <keithp@keithp.com> for this code */
-static void 
+static void
 swap_image(uint8_t *	     src,
            uint32_t 	     src_stride,
 	   uint8_t *	     dst,
@@ -899,14 +899,14 @@ bit_order(xcb_image_t *i)
     }
 }
 
-/* Convert from one byte order to another by flipping the 
+/* Convert from one byte order to another by flipping the
  * low two bits of the byte index along a scanline
  */
-static uint32_t 
+static uint32_t
 conversion_byte_swap(xcb_image_t *src, xcb_image_t *dst)
 {
     xcb_image_format_t ef = effective_format(src->format, src->bpp);
-    
+
     /* src_ef == dst_ef in all callers of this function */
     if (ef == XCB_IMAGE_FORMAT_XY_PIXMAP) {
 	return bit_order(src) ^ bit_order(dst);
@@ -927,7 +927,7 @@ xcb_image_convert (xcb_image_t *  src,
      up front just to be nice. */
   assert(image_format_valid(src));
   assert(image_format_valid(dst));
-  
+
   /* images must be the same size
    * (yes, we could copy a sub-set)
    */
@@ -990,7 +990,7 @@ xcb_image_subimage(xcb_image_t *  image,
 {
     int                 i, j;
     xcb_image_t *       result;
-    
+
     if (x + width > image->width)
 	return 0;
     if (y + height > image->height)

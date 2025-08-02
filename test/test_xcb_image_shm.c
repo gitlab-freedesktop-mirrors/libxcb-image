@@ -65,7 +65,7 @@ main (int argc, char *argv[])
   xcb_image_t *img;
   xcb_shm_query_version_reply_t *rep;
   xcb_shm_segment_info_t shminfo;
-  
+
   /* Open the connexion to the X server and get the first screen */
   c = xcb_connect (NULL, &screen_nbr);
   screen = xcb_aux_get_screen (c, screen_nbr);
@@ -160,12 +160,12 @@ main (int argc, char *argv[])
   points[1].y = 1;
   xcb_poly_line(c, XCB_COORD_MODE_ORIGIN, rect, fgcolor, 2, points);
 
-  xcb_flush (c); 
+  xcb_flush (c);
 
   while ((e = xcb_wait_for_event(c)))
     {
       switch (e->response_type)
-	{ 
+	{
 	case XCB_EXPOSE:
 	  {
 	    xcb_copy_area(c, rect, win, bgcolor,

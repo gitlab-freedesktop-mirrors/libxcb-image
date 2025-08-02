@@ -85,7 +85,7 @@ static void process_events(xcb_connection_t *c,
     while ((e = xcb_wait_for_event(c))) {
 	uint32_t r = XCB_EVENT_RESPONSE_TYPE(e);
 	xcb_generic_error_t *err;
-	
+
 	fprintf(stderr, "event %d\n", r);
 	switch (r) {
 	case XCB_EXPOSE:
@@ -109,7 +109,7 @@ static void process_events(xcb_connection_t *c,
 	free(e);
     }
 }
-		       
+
 #define INSET_X 31
 #define INSET_Y 32
 

@@ -85,7 +85,7 @@ reflect_window (xcb_connection_t *c,
   printf ("bpl %d %d\n", image->stride, image->height);
 
   printf("calculating reflection -- this may take awhile...\n");
-  
+
   for (left_x = 0 ; left_x < width/2 ; left_x++)
     {
       for (y = 0 ; y < height ; y++)
@@ -129,7 +129,7 @@ main (int argc, char *argv[])
   int              depth;
   int              screen_nbr;
   xcb_generic_event_t *e;
-  
+
   /* Open the connexion to the X server and get the first screen */
   c = xcb_connect (NULL, &screen_nbr);
   screen = xcb_aux_get_screen (c, screen_nbr);
@@ -216,18 +216,18 @@ main (int argc, char *argv[])
                        strlen ("got"), "got");
 
 
-  
+
 
   /* Map the window on the screen */
   xcb_map_window (c, new_win);
 
 
-  xcb_flush (c); 
+  xcb_flush (c);
 
   while ((e = xcb_wait_for_event(c)))
     {
       switch (e->response_type)
-	{ 
+	{
 	case XCB_EXPOSE:
 	  {
 	    xcb_copy_area(c, rect, win, bgcolor,

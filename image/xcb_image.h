@@ -9,17 +9,17 @@
  * the rights to use, copy, modify, merge, publish, distribute, sublicense,
  * and/or sell copies of the Software, and to permit persons to whom the
  * Software is furnished to do so, subject to the following conditions:
- * 
+ *
  * The above copyright notice and this permission notice shall be included in
  * all copies or substantial portions of the Software.
- * 
+ *
  * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
  * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
  * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
  * AUTHORS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
  * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
  * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- * 
+ *
  * Except as contained in this notice, the names of the authors or their
  * institutions shall not be used in advertising or otherwise to promote the
  * sale, use or other dealings in this Software without prior written
@@ -37,9 +37,9 @@ extern "C" {
 
 /**
  * @defgroup xcb__image_t XCB Image Functions
- * 
+ *
  * These are functions used to create and manipulate X images.
- * 
+ *
  * The X image format we use is specific to this software,
  * which is probably a bug; it represents an intermediate
  * position between the wire format used by the X GetImage
@@ -47,7 +47,7 @@ extern "C" {
  * image consists of a header of type @ref xcb_image_t
  * describing the properties of the image, together with a
  * pointer to the image data itself.
- * 
+ *
  * X wire images come in three formats.  An xy-bitmap is a
  * bit-packed format that will be expanded to a two-color
  * pixmap using a GC when sent over the wire by PutImage.
@@ -56,7 +56,7 @@ extern "C" {
  * pixmap representation, with each pixel packed into a
  * word.  Pixmaps are sent and received over the wire only
  * to/from drawables of their depth.
- * 
+ *
  * Each X server defines, for each depth and format,
  * properties of images in that format that are sent and
  * received on the wire.  We refer to this as a "native"
@@ -78,7 +78,7 @@ extern "C" {
  * provided for creating X images from xbm-format data; this
  * routine is in this library only because it is a trivial
  * use case for the library.
- * 
+ *
  * @{
  */
 
